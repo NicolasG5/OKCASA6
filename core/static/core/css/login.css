@@ -1,0 +1,148 @@
+/* modal */
+.login-box{
+
+    position: relative;
+    width: auto;
+    height: auto;
+    background: #e87228;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+       
+    }
+
+    .login-box .h2-login{
+
+        margin-top: 50px;
+    }
+
+    .register-box .h2-login{
+        margin-top: 50px;
+    }
+
+    .login-box a{
+      text-decoration: none;
+      color: #000;
+    }
+    .register-box{
+    
+        position: relative;
+        width: auto;
+        height: auto;
+        background: #e87228;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-size: cover;}
+
+    .register-box a{
+    text-decoration: none;
+    color: #000;}
+
+    .h2-login{
+    font-size: 2em;
+    color: #fff;
+    text-align: center;
+    }
+    
+    .input-boxe{
+    position: relative;
+    width: 310px;
+    margin: 30px 0;
+    border-bottom: 2px solid #fff;
+    
+    
+    }
+    
+    .input-boxe label{
+        position:absolute;
+        top: 10%;
+        left: 5px;
+        transform: translateY(-50%);
+        font-size: 1em;
+        color: #fff;
+        pointer-events: none;
+        transition: .5s;
+    
+    }
+    }
+    
+    .input-boxe input{
+    
+        width: 100%;
+        height: 50px;
+        background: transparent;
+        border: none;
+        outline: none;
+        font-size: 1em;
+        color: #fff;
+        padding: 0 8px 0 5px;
+    
+    }
+    
+    .input-boxe .icon{
+    
+        position: absolute;
+        right: 8px;
+        color:#fff;
+        font-size: 1.2em;
+        line-height: 57px;
+    
+    }
+    
+    .recordar-contrasena{
+        margin: -15px 0 15px;
+        font-size: .9em;
+        display: flex;
+        justify-content: space-between;
+    }
+    .recordar-contrasena label input{
+        margin-right: 3px;
+    }
+    
+    .recordar-contrasena a{
+        color: #fff;
+        text-decoration: none;
+    }
+    
+    .recordar-contrasena a:hover{
+        text-decoration: underline;
+    }
+    
+    
+    .button-login{
+    
+        width: 100%;
+        height: 40px;
+        background-color: #fff;
+        border: none;
+        outline: none;
+        border-radius: 40px;
+        cursor: pointer;
+        font-size: 1em;
+        color: #000;
+        font-weight: 500;
+    
+    }
+    
+    .register-link{
+        font-size: .9em;
+        color: #fff;
+        text-align: center;
+        margin: 25px 0 10px;
+    }
+    
+    .register-link p a{
+        color: #fff;
+        text-decoration: none;
+        font-weight: 600;
+    
+    
+    }
+    
+    .register-link p a{
+        text-decoration: underline;
+    }
+
+    /* fin modal */
