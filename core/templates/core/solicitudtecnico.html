@@ -1,0 +1,106 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block css %}
+{% endblock %}
+{% block contenido %}
+
+<link href="{% static 'core/css/historial.css' %}" rel="stylesheet">
+
+<body>
+    <div class="card">
+        <div class="row">
+            <div class="col-md-12 cart2">
+                <div class="title">
+                    <div class="row">
+                        <div class="col1"><b>Historial de seguimiento</b></div>
+                    </div>
+                    <form class="form1 w-100">
+                        <input id="code" placeholder="Buscar Producto">
+                    </form>
+                </div>
+                
+                <style>
+                    .card {
+                        background-color: #d3862f;
+                        margin: auto;
+                        margin-top: 170px;
+                        margin-bottom: 100px;
+                        padding: 50px;
+                        width: 90%;
+                        box-shadow: 0 6px 20px 0 rgb(217, 137, 39);
+                        border-radius: 1rem;
+                        color: #040303;
+}
+                    table {
+                      width: 100%;
+                      border-collapse: collapse;
+                    }
+                  
+                    th, td {
+                      border: 1px solid #040303;
+                      padding: 8px;
+                      text-align: left;
+                    }
+                  
+                    th {
+                      background-color: #f2f2f2;
+                    }
+                  </style>
+                  
+                <table>
+                    <thead>
+                      <tr>
+                        <th>Número de solicitud <span></span></th>
+                        <th>Estado <span></span></th>
+                        <th>Sub Estado <span></span></th>
+                        <th>Origen <span></span></th>
+                        <th>Categoría <span></span></th>
+                        <th>Servicio <span></span></th>
+                        <th>Fecha de solicitud <span></span></th>
+                        <th>Fecha de Resolución <span></span></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>CAS-1345446-Q1X7R3</td>
+                        <td>Cerrada</td>
+                        <td >Aprobado</td>
+                        <td>Portal</td>
+                        <td>INSCRIPCIÓN DE ASIGNATURAS</td>
+                        <td>RETIRO DE ASIGNATURA</td>
+                        <td>05/01/2023 18:13</td>
+                        <td>06/01/2023 14:23</td>
+                      </tr>
+                      <tr>
+                        <td>CAS-516585-H2J4C4</td>
+                        <td>Cerrada</td>
+                        <td></td>
+                        <td>Portal</td>
+                        <td>FINANCIAMIENTO</td>
+                        <td>GRATUIDAD</td>
+                        <td>21/04/2021 17:00</td>
+                        <td>16/05/2021 16:17</td>
+                      </tr>
+                      <tr>
+                        <td>CAS-516585-H2J4C4</td>
+                        <td>En proceso</td>
+                        <td></td>
+                        <td>Portal</td>
+                        <td>FINANCIAMIENTO</td>
+                        <td>GRATUIDAD</td>
+                        <td>21/04/2021 17:00</td>
+                        <td>En proceso</td>
+                      </tr>
+                      <!-- Agrega más filas si es necesario -->
+                    </tbody>
+                  </table>
+                  
+                
+                
+            </div>
+        </div>
+    </div>
+</body>
+
+{% endblock %}

@@ -1,0 +1,47 @@
+/*--------------------------------------------------------------------------------------------------------------------------------*/
+.fa {
+    color: #000;
+}
+
+.fa:hover {
+    color: #d99022 !important;
+}
+
+.card {
+    background-color: #d3862f;
+    margin: auto;
+    margin-top: 170px;
+    margin-bottom: 100px;
+    padding: 50px;
+    width: 90%;
+    box-shadow: 0 6px 20px 0 rgb(217, 137, 39);
+    border-radius: 1rem;
+}
+
+
+
+@media(max-width:767px) {
+    .card {
+        margin-top: 200px;
+    }
+}
+
+.col1 {
+    font-size: x-large;
+}
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  th, td {
+    border: 1px solid #0f0b0b;
+    padding: 8px;
+    text-align: left;
+  }
+
+  th {
+    background-color: #020101;
+  }
+

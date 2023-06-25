@@ -1,0 +1,55 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block css %}
+{% endblock %}
+{% block contenido %}
+<link href="{% static 'core/css/solicitud.css' %}" rel="stylesheet">
+
+
+<div class="card">
+    <div class="row">
+        <div class="col-md-12 cart2">
+            <div class="title">
+                <div class="row">
+                    <div class="col1"><b><h3>Solicitudes en línea:</h3></b></div>
+                </div>
+               
+            </div>
+            <style>
+                .card {
+                    background-color: #d3862f;
+                    margin: auto;
+                    margin-top: 100px;
+                    margin-bottom: 100px;
+                    padding: 50px;
+                    width: 90%;
+                    box-shadow: 0 6px 20px 0 rgb(217, 137, 39);
+                    border-radius: 1rem;
+                    color: #040303;
+
+                    #env{
+                        width: 20%;
+                        height: 50px;
+                        margin-left: 40%;
+                        background-color: rgb(25, 98, 98);
+                        color: aliceblue;
+                        border-radius: 30px;
+                        margin-top: 20px;
+                 }
+}
+              </style>
+              
+              <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button id="env" type="submit">Enviar</button>
+              </form>
+              
+            
+            
+        </div>
+    </div>
+</div>
+
+{% endblock %}

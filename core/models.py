@@ -100,4 +100,3 @@ class Compra(models.Model):
         servicio_label = next((choice[1] for choice in ServicioChoice.get_choices() if choice[0] == self.servicio), '')
         return f"{self.usuario.username} - {self.servicio}"
 
-class Inspeccion(models.Model):

@@ -1,0 +1,93 @@
+*{
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body { 
+
+background: url(../css/img/OyWl4A.webp);
+-webkit-background-size: cover;
+background-size: cover;
+background-attachment:fixed;
+}
+
+.contenedor .form .form-header .form-tittle{
+font-weight: normal;
+font-family: sans-serif;
+color: rgb(255, 255, 255);
+text-align: center;
+padding: 14px 0;
+}
+
+.contenedor .form .form-header .form-tittle{
+color: rgb(255, 255, 255);
+}
+
+.contenedor .form{
+background: rgba(rgb(255, 255, 255),);
+width: 90%;
+max-width: 650px;
+margin: auto;
+padding: 5px 35px;
+margin-top: 30px;
+padding-bottom: 30px;
+border-radius: 3px;
+}
+
+.contenedor.form .from-label{
+display: block;
+color: rgb(255, 255, 255);
+font-size: 16px;
+font-family: roboto;
+position: relative;
+
+}
+
+.contenedor .form .form-input, .form-textarea{
+background: rgb(255, 255, 255);
+border: none;
+outline: none;
+border-bottom: 2px solid #d46d18;
+width: 100%;
+padding: 12px;;
+margin-bottom: 20px;
+border-radius: 2px;
+font-size: 14px;
+color: rgb(0, 0, 0);
+font-family: Roboto;
+
+}
+
+.contenedor .form .form-textarea{
+    resize: vertical;
+    max-height: 150px;
+    min-height: 50px;
+}
+
+.contenedor .form .btn-submit{
+width: 100%;
+font-family: Roboto;
+outline: none;
+background-color: rgb(247, 74, 0);
+font-size: 16px;
+border: none;
+color: rgb(255, 255, 255);
+padding: 15px 0;
+cursor: pointer;
+}
+
+.contenedor .form .btn-submit:hover {
+background: #f2be71;
+
+
+}
+
+#hora{
+
+    margin-top: 10px;
+    margin-bottom: 30px;
+
+}
