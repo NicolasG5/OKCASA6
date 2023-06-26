@@ -104,7 +104,8 @@
                       <td>{{ solicitud.hora }}</td>
                       <td>{{ solicitud.descripcion }}</td>
                       <td class="estado-{{ solicitud.id }}">{{ solicitud.estado }}</td>
-                      <td>{{ form.servicios }}</td>
+                      
+                      <td>{{ solicitud.get_servicio_display }}</td>
                       <td>
                         <button id="conf" class="modificar-btn" data-solicitud-id="{{ solicitud.id }}" onclick="location.href='/solicitud/{{ solicitud.id }}/modificar/'">Modificar</button>
                         <form method="POST" action="/solicitud/{{ solicitud.id }}/eliminar/">

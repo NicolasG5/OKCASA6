@@ -41,6 +41,8 @@ urlpatterns = [
     path('solicitud/<int:solicitud_id>/denegar/', DenegarSolicitudView.as_view(), name='denegar_solicitud'),
     path('solicitud/<int:solicitud_id>/modificar/', views.modificar_solicitud, name='modificar_solicitud'),
     path('solicitud/<int:solicitud_id>/eliminar/', views.eliminar_solicitud, name='eliminar_solicitud'),
+    path('equiposDisponible/', equiposDisponible, name='equiposDisponible'),
+    
 
 ]
 urlpatterns += router.urls

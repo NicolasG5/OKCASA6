@@ -6,7 +6,7 @@ from .models import *
 #Seccion donde se registran las clases al panel de admin de Django
 admin.site.register(TipoUsuario)
 admin.site.register(Usuario)
-
+admin.site.register(EquipoInspeccion)
 
 
 

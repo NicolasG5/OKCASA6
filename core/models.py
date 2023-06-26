@@ -1,11 +1,11 @@
 from django.db import models
 from django.utils import timezone
 from datetime import time
-from django.contrib.auth.models import User
+from django.contrib.auth.models import *
 
-
-
-
+# Definicion de grupos
+# Group.objects.get_or_create(name='Técnicos')
+# Group.objects.get_or_create(name='Usuarios Comunes')
 # Create your models here.
 
 class TipoUsuario(models.Model):
@@ -52,12 +52,26 @@ class ServicioChoice:
     @classmethod
     def get_choices(cls):
         return cls.CHOICES
+    
+class EquipoInspeccion(models.Model):
+    nombres= models.CharField(max_length=250)
+    disponibilidad = models.CharField(max_length=50, default='No Disponible')
+    Cantidad = models.IntegerField(default=0)
+
+
+
+class controlInspeccion(models.Model):
+    estado2 = models.CharField(max_length=100,default='En Proceso')
+    descripcion = models.CharField(max_length=200)
+    equipo_id = models.ForeignKey(EquipoInspeccion,on_delete=models.CASCADE,default=0)
+
+
 
  
 
 class SolicitudEnLinea(models.Model):
-    
     tecnico_id = models.ForeignKey(Tecnico, on_delete=models.SET_NULL, null=True)
+    controlInspeccion_id =models.ForeignKey(controlInspeccion, on_delete=models.SET_NULL, null=True)
     nombre = models.CharField(max_length=100)
     apellido = models.CharField(max_length=100)
     correo = models.EmailField()
@@ -72,20 +86,8 @@ class SolicitudEnLinea(models.Model):
         servicio_label = next((choice[1] for choice in ServicioChoice.get_choices() if choice[0] == self.servicio), '')
         return f"{self.descripcion} - {self.nombre} {self.apellido} ({self.correo}) - Fecha: {self.fecha} Hora: {self.hora} - Estado: {self.estado} - Servicio: {servicio_label}"
 
-        
 
-class controlInspeccion(models.Model):
-    tecnico_id = models.ForeignKey(Tecnico, on_delete=models.SET_NULL, null=True)
-    nombre = models.CharField(max_length=100, blank=True)
-    apellido = models.CharField(max_length=100, blank=True)
-    correo = models.EmailField(blank=True)
-    fecha = models.DateField(blank=True)
-    hora = models.TimeField(blank=True)
-    estado = models.CharField(max_length=100,default='Pendiente')
-    descripcion = models.CharField(max_length=200)
 
-    def __str__(self):
-        return f"{self.descripcion} - {self.nombre} {self.apellido} ({self.correo}) - Fecha: {self.fecha} Hora: {self.hora} - Estado:{self.estado}"
 
 
 

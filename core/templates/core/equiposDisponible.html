@@ -1,0 +1,67 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block css %}
+{% endblock %}
+{% block contenido %}
+
+<style>
+    .table-container {
+        border-radius: 10px;
+        width: 50%;
+        margin: 0 auto;
+        background-color: #f2f2f2;
+        padding: 20px;
+    }
+    
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    
+    th, td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+    
+    th {
+        background-color: #f9f9f9;
+        font-weight: bold;
+    }
+    
+    tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+    
+    tr:hover {
+        background-color: #e9e9e9;
+    }
+</style>
+
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Número de integrantes</th>
+                <th>Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for equipo in equipos %}
+            <tr>
+                <td>{{ equipo.id }}</td>
+                <td>{{ equipo.nombres }}</td>
+                <td>{{ equipo.Cantidad }}</td>
+                <td>{{ equipo.disponibilidad }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+
+{% endblock contenido %}

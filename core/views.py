@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import View
+from django.contrib.auth.models import User
 from django.core.mail import send_mail
 from django.core.mail import EmailMessage
 from django.http import JsonResponse
@@ -10,7 +11,7 @@ from .models import *
 from .forms import SolicitudEnLineaForm, RegisterForm, RegisterView
 import json
 import requests
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from .models import Tecnico, Compra
 from .api import UsuarioViewSet, TecnicoViewSet, SolicitudEnLineaViewSet
 from django.urls import reverse_lazy
@@ -27,11 +28,25 @@ from django.http import HttpResponse
 
 
 
+
+
 # Create your views here.
 
+def grupo_requerido(nombre_grupo):
+    def decorator(view_func):
+        @user_passes_test(lambda user: user.groups.filter(name=nombre_grupo).exists())
+        def wrapper(request, *args , **kwargs):
+            return view_func(request, *args , **kwargs)
+        return wrapper
+    return decorator
+
+@grupo_requerido('Cliente')
 def index(request):
     return render(request,'core/index.html')
 
+
+
+@grupo_requerido('Cliente')
 @login_required
 def indexapi(request):
 
@@ -47,24 +62,30 @@ def indexapi(request):
 
 @login_required
 def base(request):
-    return render(request,'core/base.html')
+    user_is_tecnico = False
+    if request.user.is_authenticated and request.user.groups.filter(name='tecnico').exists():
+        user_is_tecnico = True
+    return render(request,'core/base.html',{'user_is_tecnico': user_is_tecnico})
 
 @login_required
 def formulariocorreo(request):
     return render(request,'core/formulariocorreo.html')
 
-
+@grupo_requerido('Cliente')
 @login_required
 def blog(request):
     return render(request,'core/blog.html')
 
+@grupo_requerido('Cliente')
 @login_required
 def contacto(request):
     return render(request,'core/contacto.html')
 
+@grupo_requerido('Cliente')
 @login_required
 def detalles(request):
     return render(request,'core/detalles.html')
+
 
 @login_required
 def inspeccion(request):
@@ -74,22 +95,27 @@ def inspeccion(request):
 def equipo(request):
     return render(request,'core/equipo.html')
 
+@grupo_requerido('Cliente')
 @login_required
 def servicio(request):
     return render(request,'core/servicio.html')
 
+@grupo_requerido('Cliente')
 @login_required
 def sobrenosotros(request):
     return render(request,'core/sobrenosotros.html')
 
+@grupo_requerido('Cliente')
 @login_required
 def testimonios(request):
     return render(request,'core/testimonios.html')
+
 
 @login_required
 def correo(request):
     return render(request,'core/correo.html')
 
+@grupo_requerido('Cliente')
 @login_required
 def perfil(request):
     return render(request,'core/perfil.html')
@@ -98,6 +124,13 @@ def perfil(request):
 @login_required
 def seguimientoSolicitud(request):
     return render(request,'core/seguimientoSolicitud.html')
+
+@grupo_requerido('Cliente')
+@login_required
+def equiposDisponible(request):
+    equipos = EquipoInspeccion.objects.all()
+    return render(request,'core/equiposDisponible.html',{'equipos': equipos})
+
 
 @login_required
 def solicitud(request):
@@ -108,7 +141,7 @@ def solicitud(request):
             tecnico = Tecnico.objects.first()
             solicitud.tecnico = tecnico
             solicitud.save()
-            return redirect('tecnico')  # Corregido el argumento de redirect
+            return redirect('solicitud')  # Corregido el argumento de redirect
     else:
         form = SolicitudEnLineaForm()
     
@@ -116,13 +149,19 @@ def solicitud(request):
 
 
 @login_required
+@grupo_requerido('tecnico')
 def tecnico(request):
+
+    
+
     
     tecnico = Tecnico.objects.first()  # Corregir la asignación de la variable "tecnico" en minúsculas
     solicitudes = SolicitudEnLinea.objects.filter(tecnico_id=tecnico)
     return render(request, 'core/tecnico.html', {'tecnico': tecnico, 'solicitudes': solicitudes})
 
+
 @login_required
+@grupo_requerido('tecnico')
 def solicitudtecnico(request):
     return render(request,'core/solicitudtecnico.html')
 
@@ -190,7 +229,7 @@ from django.core.mail import send_mail
 from django.conf import settings
 
 # Resto de las importaciones...
-
+@login_required
 def enviar_correo(request):
     if request.method == 'POST':
         solicitud_id = request.POST.get('solicitud_id')
